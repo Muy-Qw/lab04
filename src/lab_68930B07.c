@@ -12,6 +12,20 @@ Re-mould it nearer to the Heart's Desire!";
 
 int strindex(const char source[], char pattern[])
 {
+    const char *start = source;
+    const char *found = start;
+    const char *last_match = NULL;
+
+    while ( (found = strstr(found, pattern)) != NULL )
+    {
+        last_match = found;
+        found = found + 1;
+    }
+
+    if (last_match != NULL)
+        return last_match - start;
+    else
+        return -1;
     // TODO: write your code here
 }
 
